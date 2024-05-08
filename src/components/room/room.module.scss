@@ -1,0 +1,11 @@
+.room {
+  display: flex;
+  flex: 1 1 auto;
+
+  &__separator {
+    display: block;
+    height: calc(100vh - 80px);
+    width: 4px;
+    background-color: #77778b;
+  }
+}

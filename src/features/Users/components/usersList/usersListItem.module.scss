@@ -1,0 +1,37 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0;
+  width: 100%;
+  border-radius: 15px;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &__symbol {
+    color: #634873;
+    margin-bottom: 0.5rem;
+  }
+
+  &__avatar {
+    display: flex;
+    max-width: 48px;
+    max-height: 48px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__name {
+    color: #634873;
+  }
+}

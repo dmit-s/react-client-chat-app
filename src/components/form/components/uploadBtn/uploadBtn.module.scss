@@ -1,0 +1,15 @@
+.uploadBtn {
+  display: flex;
+  font-size: 2.25rem;
+  cursor: pointer;
+  color: #705ed5;
+
+  &__fileInputLabel {
+    display: flex;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+  }
+}
