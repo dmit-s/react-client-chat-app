@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./messagesItem.module.scss";
 import base64ToImage from "../../../../utils/base64ToImage";
 
@@ -6,13 +6,12 @@ const MessagesItem = ({
   message: { text, pic },
   sender: { id, name, avatar },
   socket,
+  scrollToBottom,
 }) => {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
 
   useEffect(() => {
-    if (pic) {
-      base64ToImage(pic).then((res) => setImage(res));
-    }
+    pic && base64ToImage(pic).then((res) => setImage(res));
   }, []);
 
   return (
@@ -31,7 +30,9 @@ const MessagesItem = ({
         {text && <div className={styles.message__text}>{text}</div>}
         {pic && (
           <div className={styles.message__image}>
-            <img src={image?.src} alt="some image" />
+            {image && (
+              <img src={image.src} alt="some image" onLoad={scrollToBottom} />
+            )}
           </div>
         )}
       </div>

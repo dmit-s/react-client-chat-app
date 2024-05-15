@@ -6,21 +6,23 @@ import useMessages from "../../hooks/useMessages";
 
 const ChatWindow = ({ socket }) => {
   const messages = useMessages();
-  const ref = useRef(null);
+  const endRef = useRef(null);
+
+  const scrollToBottom = () => {
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
 
   useEffect(() => {
-    setTimeout(() => {
-      ref.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-    }, 100);
+    scrollToBottom();
   }, [messages]);
 
   return (
     <div className={styles.wrapper}>
-      <Messages socket={socket} />
+      <Messages socket={socket} scrollToBottom={scrollToBottom} />
       <div className={styles.container}>
         <Form socket={socket} />
       </div>
-      <div ref={ref}></div>
+      <div ref={endRef}></div>
     </div>
   );
 };

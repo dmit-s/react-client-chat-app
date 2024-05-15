@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { selectCurrentUser } from "../Users/usersSlice";
 import useMessages from "../../hooks/useMessages";
 
-const Messages = ({ socket }) => {
+const Messages = ({ socket, scrollToBottom }) => {
   const dispatch = useDispatch();
   const messages = useMessages();
   const currentUser = useSelector(selectCurrentUser);
@@ -29,6 +29,7 @@ const Messages = ({ socket }) => {
           {...item}
           currentUser={currentUser}
           socket={socket}
+          scrollToBottom={scrollToBottom}
         />
       ))}
     </div>
